@@ -293,7 +293,9 @@ async def start(client, message):
                     protect_content=True if PROTECT_CONTENT else False,
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
-                anshverify = await client.send_message(VERIFY_COMPLETE_LOG, text="verify user")                            
+                dlt=await client.send_message(VERIFY_COMPLETE_LOG, text="verify user") 
+                await asyncio.sleep(120)
+                await dlt.delete()
                 return
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
