@@ -269,8 +269,9 @@ async def start(client, message):
                 reply_markup=InlineKeyboardMarkup(btn)
             )
             await verify_user(client, userid, token)
-            await client.send_message(VERIFY_COMPLETE_LOG, text="u are verified")            
-            await anshverify.delete()
+            d=await client.send_message(VERIFY_COMPLETE_LOG, text="u are verified")            
+            await asyncio.sleep(120)
+            await d.delete()
             return
         else:
             return await message.reply_text(
